@@ -5,6 +5,7 @@ import * as CryptoJS from "crypto-js";
 import * as bip39 from "bip39";
 import { hdkey } from "ethereumjs-wallet";
 import * as util from "ethereumjs-util";
+import Web3 from 'web3';
 
 @Component({
     selector: 'app-root',
@@ -20,6 +21,8 @@ export class AppComponent {
     wallet: any = {
         address: ''
     }
+
+    web3: any;
     
     defaultSeeds : string = 'february current defy one inform wet hurry cupboard type enable spare famous'
     constructor(private formBuilder: FormBuilder) {
@@ -30,6 +33,10 @@ export class AppComponent {
 
         this.encrypted = localStorage.getItem('seeds');
         this.initializeWallet(this.defaultSeeds);
+        this.web3 = new Web3;
+        this.web3.setProvider(
+          new this.web3.providers.HttpProvider('https://ropsten.infura.io/v3/d09825f256ae4705a74fdee006040903')
+        );
     }
 
     sendLogin (loginData: any) {
