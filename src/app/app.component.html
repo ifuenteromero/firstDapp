@@ -1,4 +1,8 @@
-<form [formGroup]="loginForm" (ngSubmit)="sendLogin(loginForm.value)">
+<form
+  *ngIf="!wallet.address"
+  [formGroup]="loginForm"
+  (ngSubmit)="sendLogin(loginForm.value)"
+>
   <div *ngIf="!encrypted">
     <textarea formControlName="seeds" rows="4" placeholder="Seeds"></textarea>
   </div>
