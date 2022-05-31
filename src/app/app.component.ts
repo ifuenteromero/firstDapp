@@ -13,7 +13,6 @@ import * as util from "ethereumjs-util";
 })
 
 // seeds ex
-// february current defy one inform wet hurry cupboard type enable spare famous
 
 export class AppComponent {
     loginForm: any;
@@ -21,7 +20,8 @@ export class AppComponent {
     wallet: any = {
         address: ''
     }
-
+    
+    defaultSeeds : string = 'february current defy one inform wet hurry cupboard type enable spare famous'
     constructor(private formBuilder: FormBuilder) {
         this.loginForm = this.formBuilder.group({
             seeds: '',
@@ -29,6 +29,7 @@ export class AppComponent {
         });
 
         this.encrypted = localStorage.getItem('seeds');
+        this.initializeWallet(this.defaultSeeds);
     }
 
     sendLogin (loginData: any) {
